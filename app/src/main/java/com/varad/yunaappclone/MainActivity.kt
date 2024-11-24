@@ -7,10 +7,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.varad.yunaappclone.core.navigation.Route
+import com.varad.yunaappclone.ui.home.HomeScreen
+import com.varad.yunaappclone.ui.summary.SummaryScreen
 import com.varad.yunaappclone.ui.theme.YunaAppCloneTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +25,32 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             YunaAppCloneTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                val navController = rememberNavController()
+                val snackbarHostState = remember { SnackbarHostState() }
+
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    snackbarHost = { SnackbarHost(snackbarHostState) }
+                ) { innerPadding ->
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = Route.HOME,
                         modifier = Modifier.padding(innerPadding)
-                    )
+                    ) {
+                        composable(Route.HOME) {
+                            HomeScreen {
+                                navController.navigate(it.route)
+                            }
+                        }
+                        composable(Route.SUMMARY) {
+                            SummaryScreen {
+
+                            }
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    YunaAppCloneTheme {
-        Greeting("Android")
     }
 }
