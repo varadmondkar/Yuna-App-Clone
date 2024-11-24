@@ -1,4 +1,4 @@
-package com.varad.yunaappclone.ui.summaries.emotions
+package com.varad.yunaappclone.ui.summary.emotions
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
 import com.varad.yunaappclone.core.components.ComponentTitle
+import com.varad.yunaappclone.ui.pieChart.PieChart
+import com.varad.yunaappclone.ui.pieChart.PieChartData
 import com.varad.yunaappclone.ui.theme.Fraunces
 import com.varad.yunaappclone.ui.theme.HeadingLarge
 
@@ -84,6 +86,31 @@ fun EmotionsSection(
                 Spacer(modifier = Modifier.height(LocalSpacing.current.medium))
 
                 // Pie Chart here
+                PieChart(
+                    dataPoints = listOf(
+                        PieChartData(
+                            value = 50,
+                            label = "Joy"
+                        ),
+                        PieChartData(
+                            value = 25,
+                            label = "Trust"
+                        ),
+                        PieChartData(
+                            value = 15,
+                            label = "Surprise"
+                        ),
+                        PieChartData(
+                            value = 15,
+                            label = "Fear"
+                        ),
+                        PieChartData(
+                            value = 10,
+                            label = "Sadness"
+                        ),
+                    ),
+                    innerCircleColor = Color.White
+                )
             }
 
             Spacer(modifier = Modifier.height(LocalSpacing.current.medium))

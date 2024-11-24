@@ -1,4 +1,4 @@
-package com.varad.yunaappclone.ui.summaries
+package com.varad.yunaappclone.ui.summary
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border

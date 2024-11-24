@@ -1,4 +1,4 @@
-package com.varad.yunaappclone.ui.summaries.emotions
+package com.varad.yunaappclone.ui.summary.emotions
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

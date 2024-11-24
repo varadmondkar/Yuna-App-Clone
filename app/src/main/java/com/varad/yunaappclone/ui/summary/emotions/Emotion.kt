@@ -1,4 +1,4 @@
-package com.varad.yunaappclone.ui.summaries.emotions
+package com.varad.yunaappclone.ui.summary.emotions
 
 data class Emotion(
     val text: String,

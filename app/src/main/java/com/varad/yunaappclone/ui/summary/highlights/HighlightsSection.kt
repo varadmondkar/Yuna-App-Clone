@@ -1,4 +1,4 @@
-package com.varad.yunaappclone.ui.summaries.highlights
+package com.varad.yunaappclone.ui.summary.highlights
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
