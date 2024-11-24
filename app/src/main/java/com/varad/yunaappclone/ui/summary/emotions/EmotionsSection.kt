@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
 import com.varad.yunaappclone.core.components.ComponentTitle
+import com.varad.yunaappclone.domain.model.EmotionUiModel
 import com.varad.yunaappclone.ui.pieChart.PieChart
 import com.varad.yunaappclone.ui.pieChart.PieChartData
 import com.varad.yunaappclone.ui.theme.Fraunces
@@ -34,11 +35,11 @@ import com.varad.yunaappclone.ui.theme.HeadingLarge
 fun ShowEmotionsSection() {
     EmotionsSection(
         listOf(
-            Emotion("Joy", "50%"),
-            Emotion("Trust", "25%"),
-            Emotion("Surprise", "15%"),
-            Emotion("Fear", "15%"),
-            Emotion("Sadness", "10%"),
+            EmotionUiModel("Joy", "50%"),
+            EmotionUiModel("Trust", "25%"),
+            EmotionUiModel("Surprise", "15%"),
+            EmotionUiModel("Fear", "15%"),
+            EmotionUiModel("Sadness", "10%"),
         )
     ) {
 
@@ -47,7 +48,7 @@ fun ShowEmotionsSection() {
 
 @Composable
 fun EmotionsSection(
-    emotions: List<Emotion>,
+    emotions: List<EmotionUiModel>,
     onInfoIconClick: () -> Unit
 ) {
     Box(

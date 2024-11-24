@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
 import com.varad.yunaappclone.core.components.ComponentTitle
+import com.varad.yunaappclone.domain.model.HighlightUiModel
 import com.varad.yunaappclone.ui.theme.Black20
 import com.varad.yunaappclone.ui.theme.Fraunces
 import com.varad.yunaappclone.ui.theme.HeadingLarge
@@ -34,9 +35,9 @@ import com.varad.yunaappclone.ui.theme.TitleDefault
 fun ShowHighlightsSection() {
     HighlightsSection(
         listOf(
-            Highlight("Maybe I could try to organize my tasks better and take some time off to relax."),
-            Highlight("I think I’ll start by making a list of all the tasks I need to do and then prioritize them. I also want to set aside some time each day for relaxation."),
-            Highlight("Yes, I think I might need to do that. Thank you for your support."),
+            HighlightUiModel("Maybe I could try to organize my tasks better and take some time off to relax."),
+            HighlightUiModel("I think I’ll start by making a list of all the tasks I need to do and then prioritize them. I also want to set aside some time each day for relaxation."),
+            HighlightUiModel("Yes, I think I might need to do that. Thank you for your support."),
         )
     ) {
 
@@ -45,7 +46,7 @@ fun ShowHighlightsSection() {
 
 @Composable
 fun HighlightsSection(
-    highlights: List<Highlight>,
+    highlights: List<HighlightUiModel>,
     onInfoIconClick: () -> Unit
 ) {
     Box(

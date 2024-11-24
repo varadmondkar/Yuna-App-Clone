@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
+import com.varad.yunaappclone.domain.model.HighlightUiModel
 import com.varad.yunaappclone.ui.theme.Black20
 import com.varad.yunaappclone.ui.theme.BodyDefault
 import com.varad.yunaappclone.ui.theme.Stara
@@ -26,12 +27,12 @@ import com.varad.yunaappclone.ui.theme.White20
 @Preview
 @Composable
 fun ShowHighlightCard() {
-    HighlightCard(Highlight("Maybe I could try to organize my tasks better and take some time off to relax."))
+    HighlightCard(HighlightUiModel("Maybe I could try to organize my tasks better and take some time off to relax."))
 }
 
 @Composable
 fun HighlightCard(
-    highlight: Highlight,
+    highlight: HighlightUiModel,
     modifier: Modifier = Modifier
 ) {
     Card(

@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.varad.yunaappclone.core.LocalSpacing
+import com.varad.yunaappclone.domain.model.EmotionUiModel
 import com.varad.yunaappclone.ui.theme.Black20
 import com.varad.yunaappclone.ui.theme.Stara
 import com.varad.yunaappclone.ui.theme.TitleDefault
@@ -31,12 +32,12 @@ import com.varad.yunaappclone.ui.theme.White20
 @Preview
 @Composable
 fun ShowEmotionCardComponent() {
-    EmotionCard(Emotion("Joy", "25%"))
+    EmotionCard(EmotionUiModel("Joy", "25%"))
 }
 
 @Composable
 fun EmotionCard(
-    emotion: Emotion,
+    emotion: EmotionUiModel,
     modifier: Modifier = Modifier
 ) {
     Card(
