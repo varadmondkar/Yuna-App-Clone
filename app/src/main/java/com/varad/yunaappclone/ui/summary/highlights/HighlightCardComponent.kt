@@ -22,7 +22,7 @@ import com.varad.yunaappclone.domain.model.HighlightUiModel
 import com.varad.yunaappclone.ui.theme.Black20
 import com.varad.yunaappclone.ui.theme.BodyDefault
 import com.varad.yunaappclone.ui.theme.Stara
-import com.varad.yunaappclone.ui.theme.White20
+import com.varad.yunaappclone.ui.theme.White60
 
 @Preview
 @Composable
@@ -41,7 +41,7 @@ fun HighlightCard(
             .padding(LocalSpacing.current.extraSmall),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            contentColor = White20
+            containerColor = White60.copy(alpha = 0.2f)
         )
     ) {
         Column(

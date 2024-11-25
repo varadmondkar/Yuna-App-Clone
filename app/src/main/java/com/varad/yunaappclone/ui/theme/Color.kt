@@ -15,6 +15,8 @@ val Green30 = Color(0xFF66BA24)
 
 val Black20 = Color(0xFF1E2220)
 val White20 = Color(0xFFF9F8F7)
+val White30 = Color(0xFFF5F0EE)
+val White60 = Color(0xFFDFDAD7)
 
 val emotion1 = Color(0xFFFF8400)
 val emotion2 = Color(0xFF005CE7)

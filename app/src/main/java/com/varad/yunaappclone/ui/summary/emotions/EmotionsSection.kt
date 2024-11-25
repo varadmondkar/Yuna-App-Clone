@@ -4,12 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,11 +49,11 @@ fun ShowEmotionsSection() {
 @Composable
 fun EmotionsSection(
     emotions: List<EmotionUiModel>,
-    onInfoIconClick: () -> Unit
+    onEmotionInfoClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .background(Color.White, shape = RoundedCornerShape(20.dp))
             .padding(
                 vertical = LocalSpacing.current.medium,
@@ -63,6 +63,7 @@ fun EmotionsSection(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .height(IntrinsicSize.Min)
                 .padding(LocalSpacing.current.medium),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -74,7 +75,7 @@ fun EmotionsSection(
                 ComponentTitle(
                     mainText = stringResource(R.string.your_main_label),
                     highlightedText = stringResource(R.string.emotions_label),
-                    onInfoClick = onInfoIconClick
+                    onInfoClick = onEmotionInfoClick
                 )
 
                 Text(
@@ -114,12 +115,10 @@ fun EmotionsSection(
                 )
             }
 
-            Spacer(modifier = Modifier.height(LocalSpacing.current.medium))
+            Spacer(modifier = Modifier.height(LocalSpacing.current.small))
 
-            LazyColumn {
-                items(emotions) { emotion ->
-                    EmotionCard(emotion = emotion)
-                }
+            emotions.forEach {
+                EmotionCard(emotion = it)
             }
         }
     }

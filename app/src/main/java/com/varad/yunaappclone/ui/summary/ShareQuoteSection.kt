@@ -1,6 +1,7 @@
 package com.varad.yunaappclone.ui.summary
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -28,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
 import com.varad.yunaappclone.core.components.ActionButton
+import com.varad.yunaappclone.ui.theme.Black20
 import com.varad.yunaappclone.ui.theme.Fraunces
 import com.varad.yunaappclone.ui.theme.HeadingMedium
 
@@ -51,7 +54,7 @@ fun ShareQuoteSection(
         modifier = Modifier
             .fillMaxWidth()
             .height(320.dp)
-            .border(2.dp, Color.White, shape = RoundedCornerShape(20.dp))
+            .border(4.dp, Color.White, shape = RoundedCornerShape(20.dp))
     ) {
         Image(
             painter = painter,
@@ -60,6 +63,17 @@ fun ShareQuoteSection(
                 .clip(RoundedCornerShape(20.dp))
                 .fillMaxSize(),
             contentScale = ContentScale.Crop
+        )
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(20.dp))
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.4f)),
+                        startY = 0f
+                    )
+                )
         )
 
         Column(
@@ -84,11 +98,11 @@ fun ShareQuoteSection(
 
             ActionButton(
                 text = stringResource(R.string.share_title),
-                onClick = onShareClick,
                 painter = painterResource(R.drawable.ic_share),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent.copy(alpha = 0.1f)
+                    containerColor = Black20.copy(alpha = 0.1f)
                 ),
+                onClick = onShareClick,
             )
         }
     }

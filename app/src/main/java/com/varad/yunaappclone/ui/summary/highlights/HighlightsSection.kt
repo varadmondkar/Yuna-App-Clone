@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +45,7 @@ fun ShowHighlightsSection() {
 @Composable
 fun HighlightsSection(
     highlights: List<HighlightUiModel>,
-    onInfoIconClick: () -> Unit
+    onHighlightsInfoClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -72,7 +70,7 @@ fun HighlightsSection(
                 ComponentTitle(
                     mainText = stringResource(R.string.your_label),
                     highlightedText = stringResource(R.string.highlights_label),
-                    onInfoClick = onInfoIconClick
+                    onInfoClick = onHighlightsInfoClick
                 )
 
                 Text(
@@ -89,16 +87,15 @@ fun HighlightsSection(
                     style = TitleDefault,
                     fontFamily = Stara,
                     textAlign = TextAlign.Center,
-                    color = Black20.copy(alpha = 0.7f)
+                    color = Black20.copy(alpha = 0.7f),
+                    modifier = Modifier.padding(horizontal = 20.dp)
                 )
             }
 
             Spacer(modifier = Modifier.height(LocalSpacing.current.medium))
 
-            LazyColumn {
-                items(highlights) { highlight ->
-                    HighlightCard(highlight = highlight)
-                }
+            highlights.forEach {
+                HighlightCard(highlight = it)
             }
         }
     }

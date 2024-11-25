@@ -26,7 +26,7 @@ import com.varad.yunaappclone.domain.model.EmotionUiModel
 import com.varad.yunaappclone.ui.theme.Black20
 import com.varad.yunaappclone.ui.theme.Stara
 import com.varad.yunaappclone.ui.theme.TitleDefault
-import com.varad.yunaappclone.ui.theme.White20
+import com.varad.yunaappclone.ui.theme.White60
 
 
 @Preview
@@ -40,25 +40,30 @@ fun EmotionCard(
     emotion: EmotionUiModel,
     modifier: Modifier = Modifier
 ) {
+    val localSpacing = LocalSpacing.current
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(LocalSpacing.current.extraSmall),
+            .padding(
+                top = localSpacing.small
+            ),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            contentColor = White20
+            containerColor = White60.copy(alpha = 0.2f)
         )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    vertical = LocalSpacing.current.small,
-                    horizontal = LocalSpacing.current.medium,
+                    vertical = 10.dp,
+                    horizontal = localSpacing.medium,
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+
+            // Start Content
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -67,7 +72,7 @@ fun EmotionCard(
                         .background(Color.Gray, CircleShape)
                 )
 
-                Spacer(modifier = Modifier.width(LocalSpacing.current.small))
+                Spacer(modifier = Modifier.width(localSpacing.small))
 
                 Text(
                     text = emotion.text,
@@ -77,6 +82,7 @@ fun EmotionCard(
                 )
             }
 
+            // End Content
             Text(
                 text = emotion.percent,
                 style = TitleDefault,

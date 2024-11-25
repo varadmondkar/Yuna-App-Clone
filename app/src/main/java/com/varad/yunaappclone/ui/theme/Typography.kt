@@ -1,5 +1,6 @@
 package com.varad.yunaappclone.ui.theme
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -31,6 +32,13 @@ val HeadingLargeSpan = SpanStyle(
     fontWeight = FontWeight.SemiBold,
     fontSize = 24.sp,
     color = Black20
+)
+
+val ScreenHeading = TextStyle(
+    fontWeight = FontWeight.Bold,
+    fontSize = 32.sp,
+    lineHeight = 40.sp,
+    color = Color.White
 )
 
 val HeadingXLarge = TextStyle(

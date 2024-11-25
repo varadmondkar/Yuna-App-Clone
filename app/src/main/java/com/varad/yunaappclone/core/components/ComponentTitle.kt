@@ -70,7 +70,7 @@ fun ComponentTitle(
         Image(
             painter = painterResource(R.drawable.ic_info_green),
             contentDescription = stringResource(R.string.information_icon_image_desc),
-            modifier = Modifier.size(20.dp).clickable(onClick = onInfoClick)
+            modifier = Modifier.size(24.dp).clickable(onClick = onInfoClick)
         )
     }
 }

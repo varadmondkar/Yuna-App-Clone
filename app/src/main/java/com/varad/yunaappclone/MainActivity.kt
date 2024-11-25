@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                     NavHost(
                         navController = navController,
                         startDestination = Route.HOME,
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.fillMaxSize()
                     ) {
                         composable(Route.HOME) {
                             HomeScreen {
@@ -63,9 +63,15 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         composable(Route.SUMMARY) {
-                            SummaryScreen(viewModel = viewModel) {
+                            SummaryScreen(
+                                viewModel = viewModel,
+                                snackbarHostState = snackbarHostState,
+                                contentModifier = Modifier.padding(innerPadding),
+                                onNavigate = {
 
-                            }
+                                },
+                                onNavigateUp = navController::navigateUp
+                            )
                         }
                     }
                 }
