@@ -28,27 +28,54 @@ import com.varad.yunaappclone.ui.pieChart.PieChart
 import com.varad.yunaappclone.ui.pieChart.PieChartData
 import com.varad.yunaappclone.ui.theme.Fraunces
 import com.varad.yunaappclone.ui.theme.HeadingLarge
+import com.varad.yunaappclone.ui.theme.emotion1
+import com.varad.yunaappclone.ui.theme.emotion2
+import com.varad.yunaappclone.ui.theme.emotion3
+import com.varad.yunaappclone.ui.theme.emotion4
+import com.varad.yunaappclone.ui.theme.emotion5
 
 
 @Preview
 @Composable
 fun ShowEmotionsSection() {
     EmotionsSection(
-        listOf(
-            EmotionUiModel("Joy", "50%"),
-            EmotionUiModel("Trust", "25%"),
-            EmotionUiModel("Surprise", "15%"),
-            EmotionUiModel("Fear", "15%"),
-            EmotionUiModel("Sadness", "10%"),
-        )
-    ) {
-
-    }
+        emotions = listOf(
+            EmotionUiModel("Joy", 50, "50%", emotion1),
+            EmotionUiModel("Trust", 25, "25%", emotion2),
+            EmotionUiModel("Surprise", 15, "15%", emotion3),
+            EmotionUiModel("Fear", 15, "15%", emotion4),
+            EmotionUiModel("Sadness", 10, "10%", emotion5),
+        ),
+        pieChartData = listOf(
+            PieChartData(
+                value = 50,
+                label = "Joy"
+            ),
+            PieChartData(
+                value = 25,
+                label = "Trust"
+            ),
+            PieChartData(
+                value = 15,
+                label = "Surprise"
+            ),
+            PieChartData(
+                value = 15,
+                label = "Fear"
+            ),
+            PieChartData(
+                value = 10,
+                label = "Sadness"
+            ),
+        ),
+        onEmotionInfoClick = {  }
+    )
 }
 
 @Composable
 fun EmotionsSection(
     emotions: List<EmotionUiModel>,
+    pieChartData: List<PieChartData>?,
     onEmotionInfoClick: () -> Unit
 ) {
     Box(
@@ -85,34 +112,13 @@ fun EmotionsSection(
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(modifier = Modifier.height(LocalSpacing.current.medium))
-
-                // Pie Chart here
-                PieChart(
-                    dataPoints = listOf(
-                        PieChartData(
-                            value = 50,
-                            label = "Joy"
-                        ),
-                        PieChartData(
-                            value = 25,
-                            label = "Trust"
-                        ),
-                        PieChartData(
-                            value = 15,
-                            label = "Surprise"
-                        ),
-                        PieChartData(
-                            value = 15,
-                            label = "Fear"
-                        ),
-                        PieChartData(
-                            value = 10,
-                            label = "Sadness"
-                        ),
-                    ),
-                    innerCircleColor = Color.White
-                )
+                pieChartData?.let {
+                    Spacer(modifier = Modifier.height(LocalSpacing.current.medium))
+                    PieChart(
+                        dataPoints = pieChartData,
+                        innerCircleColor = Color.White
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(LocalSpacing.current.small))

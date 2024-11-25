@@ -29,8 +29,6 @@ import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
 import com.varad.yunaappclone.core.util.UiEvent
 import com.varad.yunaappclone.data.repository.ConversationRepositoryImpl
-import com.varad.yunaappclone.domain.model.EmotionUiModel
-import com.varad.yunaappclone.domain.model.HighlightUiModel
 import com.varad.yunaappclone.domain.userCase.GetSummaryScreenData
 import com.varad.yunaappclone.ui.summary.emotions.EmotionsSection
 import com.varad.yunaappclone.ui.summary.highlights.HighlightsSection
@@ -128,7 +126,7 @@ fun SummaryScreen(
                     Spacer(modifier = Modifier.height(localSpacing.medium))
                     ShareQuoteSection(
                         painter = painterResource(R.drawable.evening_mountain_view),
-                        quote = "Keep shining; you're making remarkable progress!",
+                        quote = screenData.pastSummaries[0].quote,
                         onShareClick = viewModel::onShareClick
                     )
                 }
@@ -136,24 +134,15 @@ fun SummaryScreen(
                 item(key = "EmotionsSection") {
                     Spacer(modifier = Modifier.height(localSpacing.medium))
                     EmotionsSection(
-                        listOf(
-                            EmotionUiModel("Joy", "50%"),
-                            EmotionUiModel("Trust", "25%"),
-                            EmotionUiModel("Surprise", "15%"),
-                            EmotionUiModel("Fear", "15%"),
-                            EmotionUiModel("Sadness", "10%"),
-                        ),
+                        emotions = screenData.pastSummaries[0].emotions,
+                        pieChartData = screenData.pastSummaries[0].pieChartData,
                         onEmotionInfoClick = viewModel::onEmotionInfoClick
                     )
                 }
                 item(key = "HighlightsSection") {
                     Spacer(modifier = Modifier.height(localSpacing.medium))
                     HighlightsSection(
-                        listOf(
-                            HighlightUiModel("Maybe I could try to organize my tasks better and take some time off to relax."),
-                            HighlightUiModel("I think I’ll start by making a list of all the tasks I need to do and then prioritize them. I also want to set aside some time each day for relaxation."),
-                            HighlightUiModel("Yes, I think I might need to do that. Thank you for your support."),
-                        ),
+                        highlights = screenData.pastSummaries[0].highlights,
                         onHighlightsInfoClick = viewModel::onHighlightsInfoClick
                     )
                 }
