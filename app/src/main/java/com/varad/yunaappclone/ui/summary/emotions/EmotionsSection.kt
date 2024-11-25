@@ -49,23 +49,28 @@ fun ShowEmotionsSection() {
         pieChartData = listOf(
             PieChartData(
                 value = 50,
-                label = "Joy"
+                label = "Joy",
+                color = emotion1
             ),
             PieChartData(
                 value = 25,
-                label = "Trust"
+                label = "Trust",
+                color = emotion2
             ),
             PieChartData(
                 value = 15,
-                label = "Surprise"
+                label = "Surprise",
+                color = emotion3
             ),
             PieChartData(
                 value = 15,
-                label = "Fear"
+                label = "Fear",
+                color = emotion4
             ),
             PieChartData(
                 value = 10,
-                label = "Sadness"
+                label = "Sadness",
+                color = emotion5
             ),
         ),
         onEmotionInfoClick = {  }
@@ -76,12 +81,13 @@ fun ShowEmotionsSection() {
 fun EmotionsSection(
     emotions: List<EmotionUiModel>,
     pieChartData: List<PieChartData>?,
+    sectionBackgroundColor: Color = Color.White,
     onEmotionInfoClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White, shape = RoundedCornerShape(20.dp))
+            .background(sectionBackgroundColor, shape = RoundedCornerShape(20.dp))
             .padding(
                 vertical = LocalSpacing.current.medium,
                 horizontal = LocalSpacing.current.extraSmall
@@ -116,7 +122,7 @@ fun EmotionsSection(
                     Spacer(modifier = Modifier.height(LocalSpacing.current.medium))
                     PieChart(
                         dataPoints = pieChartData,
-                        innerCircleColor = Color.White
+                        innerCircleColor = sectionBackgroundColor
                     )
                 }
             }

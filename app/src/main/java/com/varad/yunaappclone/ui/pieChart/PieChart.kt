@@ -1,18 +1,12 @@
 package com.varad.yunaappclone.ui.pieChart
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -20,45 +14,45 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.varad.yunaappclone.ui.theme.emotion1
+import com.varad.yunaappclone.ui.theme.emotion2
+import com.varad.yunaappclone.ui.theme.emotion3
+import com.varad.yunaappclone.ui.theme.emotion4
+import com.varad.yunaappclone.ui.theme.emotion5
 
 @Preview
 @Composable
-fun PreviewPieChart(modifier: Modifier = Modifier) {
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(5.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        PieChart(
-            dataPoints = listOf(
-                PieChartData(
-                    value = 50,
-                    label = "Joy"
-                ),
-                PieChartData(
-                    value = 25,
-                    label = "Trust"
-                ),
-                PieChartData(
-                    value = 15,
-                    label = "Surprise"
-                ),
-                PieChartData(
-                    value = 15,
-                    label = "Fear"
-                ),
-                PieChartData(
-                    value = 10,
-                    label = "Sadness"
-                ),
+fun PreviewPieChart() {
+    PieChart(
+        dataPoints = listOf(
+            PieChartData(
+                value = 50,
+                label = "Joy",
+                color = emotion1
             ),
-            innerCircleColor = Color.White
-        )
-    }
+            PieChartData(
+                value = 25,
+                label = "Trust",
+                color = emotion2
+            ),
+            PieChartData(
+                value = 15,
+                label = "Surprise",
+                color = emotion3
+            ),
+            PieChartData(
+                value = 15,
+                label = "Fear",
+                color = emotion4
+            ),
+            PieChartData(
+                value = 10,
+                label = "Sadness",
+                color = emotion5
+            ),
+        ),
+        innerCircleColor = Color.White
+    )
 }
 
 
@@ -76,7 +70,7 @@ fun PieChart(
         mutableStateOf(dataPoints)
     }
 
-    val gapDegrees = 8f
+    val gapDegrees = 6f
     val numberOfGaps = dataPoints.size
     val remainingDegrees = 360f - (gapDegrees * numberOfGaps)
 
