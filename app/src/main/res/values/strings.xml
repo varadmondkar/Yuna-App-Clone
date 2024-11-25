@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Yuna App Clone</string>
+    <string name="past_summaries_title">Past Summaries</string>
+    <string name="continue_session_title">Continue Session</string>
+    <string name="share_title">Share</string>
+    <string name="your_main_label">Your Main</string>
+    <string name="emotions_label">Emotions</string>
+    <string name="during_session_title">During this Session</string>
+    <string name="your_label">Your</string>
+    <string name="highlights_label">Highlights</string>
+    <string name="highlights_component_sub_title">Let\'s take a close look at your change talk from our conversation:</string>
+    <string name="back_image_desc">Back</string>
+    <string name="more_option_image_desc">More Options</string>
+    <string name="chat_image_desc">Open Messages</string>
+    <string name="information_icon_image_desc">Click for more Information</string>
+</resources>
