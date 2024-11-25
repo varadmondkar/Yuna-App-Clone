@@ -2,10 +2,8 @@ package com.varad.yunaappclone.core.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -18,6 +16,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,28 +27,16 @@ import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.LocalSpacing
 import com.varad.yunaappclone.core.pxToDp
 import com.varad.yunaappclone.ui.theme.Label1
+import com.varad.yunaappclone.ui.theme.Stara
 
 @Preview
 @Composable
 fun ShowActionButton() {
-//    SolidActionButton(
-//        stringResource(R.string.continue_session_title),
-//        painter = painterResource(R.drawable.ic_book),
-//        onClick = {}
-//    )
     ActionButton(
         stringResource(R.string.past_summaries_title),
         painter = painterResource(R.drawable.ic_calendar),
         onClick = {}
     )
-//    ActionButton(
-//        stringResource(R.string.share_title),
-//        painter = painterResource(R.drawable.ic_calendar),
-//        colors = ButtonDefaults.buttonColors(
-//            containerColor = Color.Transparent.copy(alpha = 0.8f)
-//        ),
-//        onClick = {}
-//    )
 }
 
 @Composable
@@ -61,15 +48,16 @@ fun ActionButton(
     colors: ButtonColors = ButtonDefaults.buttonColors(),
     textColor: Color = Color.White,
     textSize: TextUnit = 12.sp,
+    textFont: FontFamily = Stara,
     painter: Painter?,
     onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
         enabled = isEnable,
-        modifier = modifier.width(IntrinsicSize.Max),
+        modifier = modifier,
         shape = RoundedCornerShape(70.pxToDp()),
-        border = BorderStroke(0.5.dp, Color.White),
+        border = BorderStroke(1.dp, Color.White),
         colors = colors,
     ) {
         painter?.let {
@@ -83,6 +71,7 @@ fun ActionButton(
         Text(
             text = text.toUpperCase(Locale.current),
             style = textStyle,
+            fontFamily = textFont,
             color = textColor,
             fontSize = textSize,
             modifier = Modifier.padding(LocalSpacing.current.small),
