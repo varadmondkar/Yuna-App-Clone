@@ -8,25 +8,46 @@ import androidx.lifecycle.viewModelScope
 import com.varad.yunaappclone.R
 import com.varad.yunaappclone.core.util.UiEvent
 import com.varad.yunaappclone.core.util.UiText
-import com.varad.yunaappclone.domain.model.SummaryScreenUiModel
-import com.varad.yunaappclone.domain.userCase.GetSummaryScreenData
+import com.varad.yunaappclone.domain.model.PastSummaryData
+import com.varad.yunaappclone.domain.model.SummaryUiModel
+import com.varad.yunaappclone.domain.userCase.GetPastSummaryData
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class SummaryViewModel(
-    private val getSummaryScreenData: GetSummaryScreenData
-): ViewModel() {
+    private val getPastSummaryData: GetPastSummaryData
+) : ViewModel() {
 
-    var screenData by mutableStateOf<SummaryScreenUiModel?>(null)
+    var screenData by mutableStateOf<PastSummaryData?>(null)
         private set
+
+    var summaries by mutableStateOf<List<SummaryUiModel>>(listOf())
+        private set
+
+    private var _backgroundImage = MutableStateFlow(R.drawable.evening_mountain_view)
+    val backgroundImage = _backgroundImage
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun getSummaryScreenData() {
+    fun getPastSummaryData() {
         viewModelScope.launch {
-            screenData = getSummaryScreenData.invoke()
+            val response = getPastSummaryData.invoke()
+            response?.let {
+                summaries = it.summaries
+                screenData = response
+            }
+        }
+    }
+
+    private fun getSpecificPastSummaryData(summaryId: String) {
+        viewModelScope.launch {
+            screenData = getPastSummaryData.invoke(summaryId = summaryId)
+            screenData?.let {
+                _backgroundImage.value = it.backgroundImage
+            }
         }
     }
 
@@ -59,13 +80,9 @@ class SummaryViewModel(
         }
     }
 
-    fun onPastSummariesClick() {
+    fun onPastSummariesClick(summaryId: String) {
         viewModelScope.launch {
-            _uiEvent.send(
-                UiEvent.ShowSnackbar(
-                    UiText.StringResource(R.string.past_summaries_title)
-                )
-            )
+            getSpecificPastSummaryData(summaryId = summaryId)
         }
     }
 

@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.varad.yunaappclone.core.navigation.Route
 import com.varad.yunaappclone.data.repository.ConversationRepositoryImpl
+import com.varad.yunaappclone.domain.userCase.GetPastSummaryData
 import com.varad.yunaappclone.domain.userCase.GetSummaryScreenData
 import com.varad.yunaappclone.ui.home.HomeScreen
 import com.varad.yunaappclone.ui.summary.SummaryScreen
@@ -31,8 +32,8 @@ class MainActivity : ComponentActivity() {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return SummaryViewModel(
-                    GetSummaryScreenData(
-                        ConversationRepositoryImpl()
+                    getPastSummaryData = GetPastSummaryData(
+                        GetSummaryScreenData(ConversationRepositoryImpl())
                     )
                 ) as T
             }
