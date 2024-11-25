@@ -33,8 +33,7 @@ fun HorizontalButtonsSection(
 ) {
     Row(
         modifier = Modifier
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+            .fillMaxWidth()
     ) {
         ActionButton(
             text = stringResource(R.string.past_summaries_title),
@@ -43,6 +42,7 @@ fun HorizontalButtonsSection(
                 containerColor = Color.Black.copy(alpha = 0.1f)
             ),
             textSize = 9.sp,
+            modifier = Modifier.weight(1f),
             onClick = onPastSummariesClick,
         )
         Spacer(modifier = Modifier.width(LocalSpacing.current.extraSmall))
@@ -50,6 +50,7 @@ fun HorizontalButtonsSection(
             text = stringResource(R.string.continue_session_title),
             painter = painterResource(R.drawable.ic_book),
             textSize = 9.sp,
+            modifier = Modifier.weight(1f),
             onClick = onContinueClick
         )
     }
