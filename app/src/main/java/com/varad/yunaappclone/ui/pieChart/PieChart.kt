@@ -66,10 +66,6 @@ fun PieChart(
         mutableStateOf(Offset.Zero)
     }
 
-    val inputList by remember {
-        mutableStateOf(dataPoints)
-    }
-
     val gapDegrees = 6f
     val numberOfGaps = dataPoints.size
     val remainingDegrees = 360f - (gapDegrees * numberOfGaps)
@@ -93,7 +89,7 @@ fun PieChart(
 
         var currentStartAngle = 170f
 
-        inputList.forEach { pieChartInput ->
+        dataPoints.forEach { pieChartInput ->
             val scale = 0.75f
             val angleToDraw = pieChartInput.value * anglePerValue
 
@@ -114,14 +110,13 @@ fun PieChart(
                 )
                 currentStartAngle += angleToDraw + gapDegrees
             }
-
-            // Inner circle at the center of pie
-            drawCircle(
-                center = pieCenter,
-                color = innerCircleColor,
-                radius = innerRadius
-            )
         }
 
+        // Inner circle at the center of pie
+        drawCircle(
+            center = pieCenter,
+            color = innerCircleColor,
+            radius = innerRadius
+        )
     }
 }
